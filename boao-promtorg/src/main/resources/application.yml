@@ -2,4 +2,4 @@ management:
   security:
     enabled: false
 server:
-  port: ${PROMTORG:8090}
+  port: ${PROMTORG:8091}
