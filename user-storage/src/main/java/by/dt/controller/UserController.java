@@ -1,4 +1,4 @@
-package by.dt.web.controller;
+package by.dt.controller;
 
 import by.dt.entity.User;
 import by.dt.service.UserService;
