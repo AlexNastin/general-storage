@@ -26,6 +26,7 @@
 
     <modules>
         <module>boao-promtorg</module>
+        <module>user-storage</module>
     </modules>
 
     <dependencies>
