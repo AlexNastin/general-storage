@@ -4,7 +4,6 @@ import by.dt.entity.User;
 import by.dt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity addUser(@RequestBody User user){
         userService.addUser(user);
         return new ResponseEntity<HttpStatus>(HttpStatus.OK);
