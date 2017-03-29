@@ -1,4 +1,4 @@
-package by.dt.userstorage;
+package by.dt.boaopromtorg;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
