@@ -1,5 +1,6 @@
 package by.dt.userstorage.entity;
 
+import by.dt.userstorage.entity.dto.RegistrationDataDTO;
 import by.dt.userstorage.entity.enums.Gender;
 import by.dt.userstorage.service.LocalDateDeserializer;
 import by.dt.userstorage.service.LocalDateSerializer;
@@ -8,13 +9,15 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@ApiModel(value = "Пользователь", description = "Обьект пользователя, включающий пользовательские настройки")
-public class User implements Serializable{
+@ApiModel(value = "Пользователь DTO", description = "Обьект пользователя, включающий пользовательские настройки")
+public class User implements Serializable {
 
+    @Id
     @ApiModelProperty(value = "Уникальный id")
     private Long id;
 
@@ -22,15 +25,18 @@ public class User implements Serializable{
     @ApiModelProperty(value = "Логин", required = true, example = "Ivan_Ivanov")
     private String login;
 
+    @ApiModelProperty(value = "Пароль")
+    private String password;
+
     @ApiModelProperty(value = "Имя пользователя", example = "Иван")
     private String name;
 
     @ApiModelProperty(value = "Фамилия пользователя", example = "Иванов")
     private String surname;
 
-    @ApiModelProperty(value = "Дата рождения")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @ApiModelProperty(value = "Дата рождения")
     private LocalDate birthday;
 
     @ApiModelProperty(value = "Пол")
@@ -51,7 +57,13 @@ public class User implements Serializable{
     @ApiModelProperty(value = "Пользовательские настройки")
     private UserSettings userSettings;
 
-    public User(){}
+    public User() {
+    }
+
+    public User(RegistrationDataDTO registrationDataDTO){
+        this.login = registrationDataDTO.getLogin();
+        this.password = registrationDataDTO.getPassword();
+    }
 
     public Long getId() {
         return id;
@@ -67,6 +79,14 @@ public class User implements Serializable{
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
