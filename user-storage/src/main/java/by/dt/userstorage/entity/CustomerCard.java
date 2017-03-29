@@ -8,9 +8,6 @@ import java.io.Serializable;
 @ApiModel(value = "Карта лояльности пользователя")
 public class CustomerCard implements Serializable {
 
-    @ApiModelProperty(value = "Уникальный id карты")
-    private Long id;
-
     @ApiModelProperty(value = "id карты в торговой сети")
     private Long cardId;
 
@@ -18,14 +15,6 @@ public class CustomerCard implements Serializable {
     private Long tradingNetworkId;
 
     public CustomerCard(){}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getCardId() {
         return cardId;
