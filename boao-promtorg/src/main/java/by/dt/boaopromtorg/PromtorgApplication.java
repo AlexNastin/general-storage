@@ -1,8 +1,8 @@
-package by.dt.userstorage;
+package by.dt.boaopromtorg;
 
-import by.dt.userstorage.config.DBConfig;
-import by.dt.userstorage.config.RabbitMQConfig;
-import by.dt.userstorage.config.WebConfig;
+import by.dt.boaopromtorg.config.DBConfig;
+import by.dt.boaopromtorg.config.RabbitMQConfig;
+import by.dt.boaopromtorg.config.WebConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;

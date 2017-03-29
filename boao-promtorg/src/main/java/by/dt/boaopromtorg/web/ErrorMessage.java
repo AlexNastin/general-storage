@@ -1,4 +1,4 @@
-package by.dt.userstorage.web;
+package by.dt.boaopromtorg.web;
 
 import org.springframework.http.HttpStatus;
 

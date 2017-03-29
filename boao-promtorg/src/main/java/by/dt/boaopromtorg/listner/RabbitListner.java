@@ -1,4 +1,4 @@
-package by.dt.userstorage.listner;
+package by.dt.boaopromtorg.listner;
 
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

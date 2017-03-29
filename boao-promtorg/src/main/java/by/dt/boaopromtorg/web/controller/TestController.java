@@ -1,4 +1,4 @@
-package by.dt.userstorage.web.controller;
+package by.dt.boaopromtorg.web.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

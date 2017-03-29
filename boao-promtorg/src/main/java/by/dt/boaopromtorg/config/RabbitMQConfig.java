@@ -1,4 +1,4 @@
-package by.dt.userstorage.config;
+package by.dt.boaopromtorg.config;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
