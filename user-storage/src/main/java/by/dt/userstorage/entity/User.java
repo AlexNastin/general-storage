@@ -21,7 +21,7 @@ public class User implements Serializable {
 
     @Id
     @ApiModelProperty(value = "Уникальный id")
-    private Long id;
+    private String id;
 
     @JsonProperty(required = true)
     @ApiModelProperty(value = "Логин", required = true, example = "Ivan_Ivanov")
@@ -67,11 +67,11 @@ public class User implements Serializable {
         this.password = registrationDataDTO.getPassword();
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
