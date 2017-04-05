@@ -1,7 +1,7 @@
-package by.dt.boaopromtorg.web;
+package by.dt.web;
 
-import by.dt.boaopromtorg.web.controller.exception.ProductAlreadyExistException;
-import by.dt.boaopromtorg.web.controller.exception.ProductNotFoundException;
+import by.dt.web.controller.exception.UserAlreadyExistException;
+import by.dt.web.controller.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -32,15 +32,15 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage);
     }
 
-    @ExceptionHandler(ProductAlreadyExistException.class)
-    public ResponseEntity<ErrorMessage> handleProductAlreadyExistException(HttpServletRequest request, Throwable e) {
+    @ExceptionHandler(UserAlreadyExistException.class)
+    public ResponseEntity<ErrorMessage> handleUserAlreadyExistException(HttpServletRequest request, Throwable e) {
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.CONFLICT, request.getRequestURL().toString(), e.getMessage());
         LOGGER.severe(errorMessage.toString());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ErrorMessage> handleProductNotFoundException(HttpServletRequest request, Throwable e) {
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorMessage> handleUserNotFoundException(HttpServletRequest request, Throwable e) {
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND, request.getRequestURL().toString(), e.getMessage());
         LOGGER.severe(errorMessage.toString());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @ComponentScan("by.dt")
-@Import({DBConfig.class, RabbitMQConfig.class, WebConfig.class})
+@Import({DBConfig.class, RabbitMQConfig.class, WebConfig.class, SwaggerConfig.class})
 public class PromtorgApplication {
 
     public static void main(String[] args) {
