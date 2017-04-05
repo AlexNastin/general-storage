@@ -31,6 +31,6 @@ public class ProductController {
 
     @RequestMapping(path = "/search/{barcode}", method = RequestMethod.GET)
     public Product searchProductByBarcode(@PathVariable String barcode){
-        return productService.searchProductByBarCode(barcode);
+        return productService.searchProductByBarсode(barcode);
     }
 }

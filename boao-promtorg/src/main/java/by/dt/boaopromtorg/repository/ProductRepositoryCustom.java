@@ -13,7 +13,7 @@ public interface ProductRepositoryCustom {
     String CATEGORY = "category";
     String PRICE = "prices.priceUnit";
 
-    List<Product> findProductsByCriteria(ProductSearchDTO productSearchDTO);
+    List<Product> findProducts(ProductSearchDTO productSearchDTO);
 
 
 }

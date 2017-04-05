@@ -9,6 +9,6 @@ public interface ProductService {
 
     void addProduct(Product product);
     List<Product> searchProduct(ProductSearchDTO productSearchDTO);
-    Product searchProductByBarCode(String barcode);
+    Product searchProductByBarсode(String barcode);
 
 }

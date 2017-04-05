@@ -13,12 +13,12 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
-public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
+class ProductRepositoryImpl implements ProductRepositoryCustom{
 
     @Autowired
     MongoOperations mongoOperations;
 
-    @Override public List<Product> findProductsByCriteria(ProductSearchDTO productSearchDTO) {
+    @Override public List<Product> findProducts(ProductSearchDTO productSearchDTO) {
         Query query = new Query();
         Criteria criteria = new Criteria();
         List<Criteria> criteriaList = new ArrayList<>();

@@ -16,7 +16,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("by.dt.userstorage"))
+                .apis(RequestHandlerSelectors.basePackage("by.dt"))
                 .paths(PathSelectors.any())
                 .build();
     }

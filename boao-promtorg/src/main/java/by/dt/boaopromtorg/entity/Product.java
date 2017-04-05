@@ -44,6 +44,10 @@ public class Product implements Serializable{
 
     public Product(){}
 
+    public void setId(String id){
+        this.id = id;
+    }
+
     public String getBarcode() {
         return barcode;
     }
@@ -58,6 +62,14 @@ public class Product implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTradingNetworkId() {
+        return tradingNetworkId;
+    }
+
+    public void setTradingNetworkId(String tradingNetworkId) {
+        this.tradingNetworkId = tradingNetworkId;
     }
 
     public String getTypeUnit() {
@@ -84,15 +96,19 @@ public class Product implements Serializable{
         this.country = country;
     }
 
+    public List<Price> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(List<Price> prices) {
+        this.prices = prices;
+    }
+
     public String getCategory() {
         return category;
     }
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

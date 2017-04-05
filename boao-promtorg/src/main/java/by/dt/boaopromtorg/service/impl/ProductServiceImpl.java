@@ -30,14 +30,14 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override public List<Product> searchProduct(ProductSearchDTO productSearchDTO) {
-        List<Product> products = productRepository.findProductsByCriteria(productSearchDTO);
+        List<Product> products = productRepository.findProducts(productSearchDTO);
         if(products == null || products.isEmpty()){
             throw new ProductNotFoundException("Product not found");
         }
         return products;
     }
 
-    @Override public Product searchProductByBarCode(String barcode) {
+    @Override public Product searchProductByBarсode(String barcode) {
         Product product = productRepository.findProductByBarcode(barcode);
         if(product == null){
             throw new ProductNotFoundException("Product not found");
