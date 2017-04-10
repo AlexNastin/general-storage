@@ -1,5 +1,7 @@
 package by.dt.boaopromtorg.web;
 
+import by.dt.boaopromtorg.web.controller.exception.CustomerCardAlreadyExistException;
+import by.dt.boaopromtorg.web.controller.exception.CustomerCardNotFoundException;
 import by.dt.boaopromtorg.web.controller.exception.ProductAlreadyExistException;
 import by.dt.boaopromtorg.web.controller.exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -32,17 +34,18 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage);
     }
 
-    @ExceptionHandler(ProductAlreadyExistException.class)
+    @ExceptionHandler({ProductAlreadyExistException.class, CustomerCardAlreadyExistException.class})
     public ResponseEntity<ErrorMessage> handleProductAlreadyExistException(HttpServletRequest request, Throwable e) {
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.CONFLICT, request.getRequestURL().toString(), e.getMessage());
         LOGGER.severe(errorMessage.toString());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
+    @ExceptionHandler({ProductNotFoundException.class, CustomerCardNotFoundException.class})
     public ResponseEntity<ErrorMessage> handleProductNotFoundException(HttpServletRequest request, Throwable e) {
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND, request.getRequestURL().toString(), e.getMessage());
         LOGGER.severe(errorMessage.toString());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
+
 }

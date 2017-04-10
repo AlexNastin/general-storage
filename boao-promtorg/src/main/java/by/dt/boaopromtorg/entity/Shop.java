@@ -13,7 +13,7 @@ public class Shop implements Serializable{
 
     @Id
     @ApiModelProperty(value = "Уникальный id")
-    private Long id;
+    private String id;
 
     @ApiModelProperty(value = "Название")
     private String name;
@@ -24,13 +24,19 @@ public class Shop implements Serializable{
     @ApiModelProperty(value = "Координата Y")
     private String coordinateY;
 
+    @ApiModelProperty(value = "Адресс магазина")
+    private String address;
+
+    @ApiModelProperty(value = "id торговой сети")
+    private String tradingNetworkId;
+
     public Shop(){};
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -56,5 +62,21 @@ public class Shop implements Serializable{
 
     public void setCoordinateY(String coordinateY) {
         this.coordinateY = coordinateY;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTradingNetworkId() {
+        return tradingNetworkId;
+    }
+
+    public void setTradingNetworkId(String tradingNetworkId) {
+        this.tradingNetworkId = tradingNetworkId;
     }
 }

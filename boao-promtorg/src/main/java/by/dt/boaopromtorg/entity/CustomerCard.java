@@ -23,6 +23,13 @@ public class CustomerCard implements Serializable {
 
     public CustomerCard(){}
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Long getCardId() {
         return cardId;

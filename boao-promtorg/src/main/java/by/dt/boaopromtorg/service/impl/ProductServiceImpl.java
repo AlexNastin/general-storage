@@ -1,6 +1,8 @@
 package by.dt.boaopromtorg.service.impl;
 
+import by.dt.boaopromtorg.entity.Price;
 import by.dt.boaopromtorg.entity.Product;
+import by.dt.boaopromtorg.entity.dto.PriceDTO;
 import by.dt.boaopromtorg.entity.dto.ProductSearchDTO;
 import by.dt.boaopromtorg.repository.ProductRepository;
 import by.dt.boaopromtorg.service.ProductService;
@@ -20,8 +22,8 @@ public class ProductServiceImpl implements ProductService{
 
 
     public void addProduct(Product product) {
-        Product existingPorduct = productRepository.findProductByBarcode(product.getBarcode());
-        if(existingPorduct != null){
+        Product existingProduct = productRepository.findProductByBarcode(product.getBarcode());
+        if(existingProduct != null){
             throw new ProductAlreadyExistException("Product is already exist");
         }
         ObjectId objectId = new ObjectId();
@@ -43,5 +45,25 @@ public class ProductServiceImpl implements ProductService{
             throw new ProductNotFoundException("Product not found");
         }
         return product;
+    }
+
+    @Override public void updatePrice(PriceDTO priceDTO) {
+        Product product = productRepository.findProductByBarcode(priceDTO.getBarcode());
+        boolean hasPriceWithCurrentPriceUnit = false;
+        for (Price price : product.getPrices()){
+            price.getShopIds().removeAll(priceDTO.getShopIds());
+            if(price.getPriceUnit().equals(priceDTO.getPriceUnit())){
+                hasPriceWithCurrentPriceUnit = true;
+                price.getShopIds().addAll(priceDTO.getShopIds());
+            }
+            if(price.getShopIds().isEmpty()){
+                product.getPrices().remove(price);
+            }
+        }
+        if(!hasPriceWithCurrentPriceUnit){
+            Price price = new Price(priceDTO);
+            product.getPrices().add(price);
+        }
+        productRepository.save(product);
     }
 }

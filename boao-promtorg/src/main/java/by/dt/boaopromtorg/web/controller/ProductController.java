@@ -1,6 +1,7 @@
 package by.dt.boaopromtorg.web.controller;
 
 import by.dt.boaopromtorg.entity.Product;
+import by.dt.boaopromtorg.entity.dto.PriceDTO;
 import by.dt.boaopromtorg.entity.dto.ProductSearchDTO;
 import by.dt.boaopromtorg.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,11 @@ public class ProductController {
     @RequestMapping(path = "/search/{barcode}", method = RequestMethod.GET)
     public Product searchProductByBarcode(@PathVariable String barcode){
         return productService.searchProductByBarсode(barcode);
+    }
+
+    @RequestMapping(path = "/price", method = RequestMethod.PUT)
+    public ResponseEntity updatePrices(@RequestBody List<PriceDTO> productDTOs){
+        productDTOs.forEach((productDTO) -> productService.updatePrice(productDTO));
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
