@@ -28,6 +28,9 @@ class ProductRepositoryImpl implements ProductRepositoryCustom{
         if(productSearchDTO.getCategory() != null){
             criteriaList.add(Criteria.where(ProductRepositoryCustom.CATEGORY).is(productSearchDTO.getCategory()));
         }
+        if(productSearchDTO.getSubCategory() != null){
+            criteriaList.add(Criteria.where(ProductRepositoryCustom.SUB_CATEGORY).is(productSearchDTO.getSubCategory()));
+        }
         if(productSearchDTO.getPriceFrom() != null){
             criteriaList.add(Criteria.where(ProductRepository.PRICE).gte(productSearchDTO.getPriceFrom()));
         }

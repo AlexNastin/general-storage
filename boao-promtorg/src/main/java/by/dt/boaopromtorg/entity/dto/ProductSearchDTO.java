@@ -14,6 +14,9 @@ public class ProductSearchDTO implements Serializable {
     @ApiModelProperty(value = "Категория")
     private String category;
 
+    @ApiModelProperty(value = "Подкатегория")
+    private String subCategory;
+
     @ApiModelProperty(value = "Цена 'От'")
     private Double priceFrom;
 
@@ -21,6 +24,14 @@ public class ProductSearchDTO implements Serializable {
     private Double priceTo;
 
     public ProductSearchDTO() {
+    }
+
+    public ProductSearchDTO(String name, String category, String subCategory, Double priceFrom, Double priceTo) {
+        this.name = name;
+        this.category = category;
+        this.subCategory = subCategory;
+        this.priceFrom = priceFrom;
+        this.priceTo = priceTo;
     }
 
 
@@ -54,5 +65,13 @@ public class ProductSearchDTO implements Serializable {
 
     public void setPriceTo(Double priceTo) {
         this.priceTo = priceTo;
+    }
+
+    public String getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(String subCategory) {
+        this.subCategory = subCategory;
     }
 }

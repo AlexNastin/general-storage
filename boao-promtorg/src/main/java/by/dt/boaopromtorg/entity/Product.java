@@ -40,6 +40,9 @@ public class Product implements Serializable{
     @ApiModelProperty(value = "Категория")
     private String category;
 
+    @ApiModelProperty(value = "Подкатегория")
+    private String subCategory;
+
     public Product(){}
 
     public String getId(){
@@ -112,5 +115,13 @@ public class Product implements Serializable{
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(String subCategory) {
+        this.subCategory = subCategory;
     }
 }

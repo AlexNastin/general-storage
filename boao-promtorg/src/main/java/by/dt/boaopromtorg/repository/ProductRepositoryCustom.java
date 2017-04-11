@@ -11,6 +11,7 @@ public interface ProductRepositoryCustom {
 
     String NAME = "name";
     String CATEGORY = "category";
+    String SUB_CATEGORY = "subCategory";
     String PRICE = "prices.priceUnit";
 
     List<Product> findProducts(ProductSearchDTO productSearchDTO);
