@@ -19,6 +19,11 @@ public class RegistrationDataDTO implements Serializable{
 
     public RegistrationDataDTO(){}
 
+    public RegistrationDataDTO(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public String getLogin() {
         return login;
     }

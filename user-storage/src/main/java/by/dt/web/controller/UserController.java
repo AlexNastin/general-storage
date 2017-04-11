@@ -27,8 +27,10 @@ public class UserController {
     }
 
     @ApiOperation(value = "Аутентификация пользователя", notes = "Возвращает авторизированного пользователя", produces = MediaType.APPLICATION_JSON_VALUE)
-    @RequestMapping(path = "/authentication", method = RequestMethod.POST)
-    public User userAuthentication(@RequestBody RegistrationDataDTO registrationDataDTO) {
+    @RequestMapping(path = "/authentication", method = RequestMethod.GET)
+    public User userAuthentication(@RequestParam(required = true, value = "login") String login,
+                                   @RequestParam(required = true, value = "password") String password) {
+        RegistrationDataDTO registrationDataDTO = new RegistrationDataDTO(login, password);
         return userService.userAuthentication(registrationDataDTO);
     }
 
