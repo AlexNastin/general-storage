@@ -6,8 +6,8 @@ import by.dt.boaopromtorg.entity.dto.PriceDTO;
 import by.dt.boaopromtorg.entity.dto.ProductSearchDTO;
 import by.dt.boaopromtorg.repository.ProductRepository;
 import by.dt.boaopromtorg.service.ProductService;
-import by.dt.boaopromtorg.web.controller.exception.ProductAlreadyExistException;
-import by.dt.boaopromtorg.web.controller.exception.ProductNotFoundException;
+import by.dt.boaopromtorg.web.controller.exception.AlreadyExistException;
+import by.dt.boaopromtorg.web.controller.exception.NotFoundException;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService{
     public void addProduct(Product product) {
         Product existingProduct = productRepository.findProductByBarcode(product.getBarcode());
         if(existingProduct != null){
-            throw new ProductAlreadyExistException("Product is already exist");
+            throw new AlreadyExistException("Product is already exist");
         }
         ObjectId objectId = new ObjectId();
         product.setId(objectId.toString());
@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService{
     @Override public List<Product> searchProduct(ProductSearchDTO productSearchDTO) {
         List<Product> products = productRepository.findProducts(productSearchDTO);
         if(products == null || products.isEmpty()){
-            throw new ProductNotFoundException("Product not found");
+            throw new NotFoundException("Product not found");
         }
         return products;
     }
@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService{
     @Override public Product searchProductByBarсode(String barcode) {
         Product product = productRepository.findProductByBarcode(barcode);
         if(product == null){
-            throw new ProductNotFoundException("Product not found");
+            throw new NotFoundException("Product not found");
         }
         return product;
     }

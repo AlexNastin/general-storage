@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/product")
@@ -20,12 +19,12 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addProducts(@RequestBody Set<Product> products) {
+    public ResponseEntity addProducts(@RequestBody List<Product> products) {
         products.forEach((product) -> productService.addProduct(product));
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public List<Product> searchProducts(@RequestParam String name, @RequestParam String category,
                                         @RequestParam String subCategory, @RequestParam Double priceFrom,
                                         @RequestParam Double priceTo) {
@@ -33,7 +32,7 @@ public class ProductController {
         return productService.searchProduct(productSearchDTO);
     }
 
-    @RequestMapping(path = "/search/{barcode}", method = RequestMethod.GET)
+    @RequestMapping(path = "/{barcode}", method = RequestMethod.GET)
     public Product searchProductByBarcode(@PathVariable String barcode) {
         return productService.searchProductByBarсode(barcode);
     }
