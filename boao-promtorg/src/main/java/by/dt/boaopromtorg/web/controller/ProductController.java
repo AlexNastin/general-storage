@@ -19,8 +19,8 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addProducts(@RequestBody List<Product> products) {
-        products.forEach((product) -> productService.addProduct(product));
+    public ResponseEntity addProducts(@RequestBody Product product) {
+        productService.addProduct(product);
         return new ResponseEntity(HttpStatus.OK);
     }
 

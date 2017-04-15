@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(path = "/customerCard")
 public class CustomerCardController {
@@ -17,8 +15,8 @@ public class CustomerCardController {
     private CustomerCardService customerCardService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addCustomerCards(@RequestBody List<CustomerCard> customerCards){
-        customerCards.forEach((customerCard) -> customerCardService.addCustomerCard(customerCard));
+    public ResponseEntity addCustomerCards(@RequestBody CustomerCard customerCard){
+        customerCardService.addCustomerCard(customerCard);
         return new ResponseEntity(HttpStatus.OK);
     }
 

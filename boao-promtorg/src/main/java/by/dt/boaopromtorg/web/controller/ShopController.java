@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(path = "/shop")
 public class ShopController {
@@ -17,8 +15,8 @@ public class ShopController {
     private ShopService shopService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity addShops(@RequestBody List<Shop> shops) {
-        shops.forEach((shop) -> shopService.addShop(shop));
+    public ResponseEntity addShops(@RequestBody Shop shop) {
+        shopService.addShop(shop);
         return new ResponseEntity(HttpStatus.OK);
     }
 
