@@ -3,10 +3,12 @@ package by.dt.entity;
 import by.dt.entity.enums.Location;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Set;
 
+@Data
 @ApiModel(value = "Пользовательские настройки")
 public class UserSettings implements Serializable{
 
@@ -21,38 +23,4 @@ public class UserSettings implements Serializable{
 
     @ApiModelProperty(value = "У казывает на локацию от которой осуществлять поиск. От домашнего адреса или от текущей локации")
     private Location locationMode;
-
-    public UserSettings(){}
-
-    public Set<CustomerCard> getCustomerCards() {
-        return customerCards;
-    }
-
-    public void setCustomerCards(Set<CustomerCard> customerCards) {
-        this.customerCards = customerCards;
-    }
-
-    public Set<Long> getInterestedTradingNetworkIds() {
-        return interestedTradingNetworkIds;
-    }
-
-    public void setInterestedTradingNetworkIds(Set<Long> interestedTradingNetworkIds) {
-        this.interestedTradingNetworkIds = interestedTradingNetworkIds;
-    }
-
-    public boolean isSendNotification() {
-        return sendNotification;
-    }
-
-    public void setSendNotification(boolean sendNotification) {
-        this.sendNotification = sendNotification;
-    }
-
-    public Location getLocationMode() {
-        return locationMode;
-    }
-
-    public void setLocationMode(Location locationMode) {
-        this.locationMode = locationMode;
-    }
 }

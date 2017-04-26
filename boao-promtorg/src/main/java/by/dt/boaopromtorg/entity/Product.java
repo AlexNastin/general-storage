@@ -2,12 +2,14 @@ package by.dt.boaopromtorg.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.List;
 
+@Data
 @ApiModel(value = "Продукт")
 @Document(collection = "product")
 public class Product implements Serializable{
@@ -42,86 +44,4 @@ public class Product implements Serializable{
 
     @ApiModelProperty(value = "Подкатегория")
     private String subCategory;
-
-    public Product(){}
-
-    public String getId(){
-        return id;
-    }
-
-    public void setId(String id){
-        this.id = id;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTradingNetworkId() {
-        return tradingNetworkId;
-    }
-
-    public void setTradingNetworkId(String tradingNetworkId) {
-        this.tradingNetworkId = tradingNetworkId;
-    }
-
-    public String getTypeUnit() {
-        return typeUnit;
-    }
-
-    public void setTypeUnit(String typeUnit) {
-        this.typeUnit = typeUnit;
-    }
-
-    public String getProducer() {
-        return producer;
-    }
-
-    public void setProducer(String producer) {
-        this.producer = producer;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public List<Price> getPrices() {
-        return prices;
-    }
-
-    public void setPrices(List<Price> prices) {
-        this.prices = prices;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getSubCategory() {
-        return subCategory;
-    }
-
-    public void setSubCategory(String subCategory) {
-        this.subCategory = subCategory;
-    }
 }
