@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerCardRepository extends MongoRepository<CustomerCard,String>{
 
-    CustomerCard findCustomerCurdByCardId(Long cardId);
+    CustomerCard findCustomerCurdByCardId(String cardId);
 }

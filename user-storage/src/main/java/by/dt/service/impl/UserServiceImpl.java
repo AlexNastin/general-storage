@@ -38,9 +38,4 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserByLoginAndPassword(registrationDataDTO.getLogin(), registrationDataDTO.getPassword());
     }
 
-    @Override public void updateUser(User user) {
-        userRepository.save(user);
-    }
-
-
 }

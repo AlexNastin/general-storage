@@ -25,7 +25,7 @@ public class CustomerCardServiceImpl implements CustomerCardService{
         customerCardRepository.insert(customerCard);
     }
 
-    @Override public CustomerCard getCustomerCardByCardId(Long cardId) {
+    @Override public CustomerCard getCustomerCardByCardId(String cardId) {
         CustomerCard customerCard = customerCardRepository.findCustomerCurdByCardId(cardId);
         if(customerCard == null){
             throw new NotFoundException("Customer card with card id:" + customerCard.getCardId() + " not found");

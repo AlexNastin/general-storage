@@ -1,4 +1,4 @@
-package by.dt.boaopromtorg;
+package by.dt.boaopromtorg.config;
 
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;

@@ -7,6 +7,5 @@ public interface UserService {
 
     User addUser(RegistrationDataDTO registrationDataDTO);
     User userAuthentication(RegistrationDataDTO registrationDataDTO);
-    void updateUser(User user);
 
 }

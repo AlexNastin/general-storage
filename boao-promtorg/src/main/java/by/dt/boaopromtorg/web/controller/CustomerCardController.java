@@ -21,7 +21,7 @@ public class CustomerCardController {
     }
 
     @RequestMapping(path = "/{cardId}", method = RequestMethod.GET)
-    public CustomerCard getCustomerCardByCardId(@PathVariable Long cardId){
+    public CustomerCard getCustomerCardByCardId(@PathVariable String cardId){
         return customerCardService.getCustomerCardByCardId(cardId);
     }
 }

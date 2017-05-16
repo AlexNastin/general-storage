@@ -18,9 +18,9 @@ public class CustomerCard implements Serializable {
     private String id;
 
     @ApiModelProperty(value = "id карты в торговой сети")
-    private Long cardId;
+    private String cardId;
 
     @ApiModelProperty(value = "id торговой сети")
-    private Long tradingNetworkId;
+    private String tradingNetworkId;
 
 }

@@ -17,7 +17,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
-@ApiModel(value = "Пользователь DTO", description = "Обьект пользователя, включающий пользовательские настройки")
+@ApiModel(value = "Пользователь")
 @Document(collection = "user")
 public class User implements Serializable {
 
@@ -51,6 +51,9 @@ public class User implements Serializable {
 
     @ApiModelProperty(value = "Номер телефона", example = "375291234567")
     private String numberPhone;
+
+    @ApiModelProperty(value = "Адрес пользователя")
+    private String address;
 
     @ApiModelProperty(value = "Координата X", example = "53.875114")
     private String coordinateX;
