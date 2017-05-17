@@ -18,6 +18,6 @@ public class Category{
     @ApiModelProperty(value = "Имя категории")
     private String name;
 
-    @ApiModelProperty(value = "Имя родительской категории")
+    @ApiModelProperty(value = "Id родительской категории")
     private String parentCategoryId;
 }
