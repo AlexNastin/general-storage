@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @ApiResponses(value = {@ApiResponse(code = 401, message = "Unauthorized", response = ResponseEntity.class)})
 @RestController
 @RequestMapping(path = "/user")
@@ -33,10 +35,18 @@ public class UserController {
         return userService.userAuthentication(registrationDataDTO);
     }
 
-    @ApiOperation(value = "Обновление пользовательских настроек", notes = "Возвращает статус выполнения", produces = MediaType.TEXT_HTML_VALUE)
+    @ApiOperation(value = "Обновление всех пользовательских настроек", notes = "Возвращает статус выполнения", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/{id}/settings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateUserSettings(@RequestBody UserSettings userSettings, @PathVariable(value = "id") String id) {
+        //TODO : updateUserSettings
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Обновление предпочитаемых категорий", notes = "Возвращает статус выполнения", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/{id}/settings/interestedCategories", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateUserSettings(@RequestBody List<String> interestedCategoryIds, @PathVariable(value = "id") String id) {
         //TODO : updateUserSettings
         return new ResponseEntity(HttpStatus.OK);
     }

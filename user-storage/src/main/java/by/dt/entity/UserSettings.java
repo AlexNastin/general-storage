@@ -22,7 +22,7 @@ public class UserSettings implements Serializable{
     private Notification notification;
 
     @ApiModelProperty(value = "Список id предпочитаемых категорий")
-    private List<Category> interestedCategories;
+    private List<String> interestedCategoryIds;
 
     @ApiModelProperty(value = "У казывает на локацию от которой осуществлять поиск. От домашнего адреса или от текущей локации")
     private Location locationMode;
