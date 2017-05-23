@@ -1,7 +1,7 @@
 package by.dt.web;
 
-import by.dt.web.controller.exception.UserAlreadyExistException;
-import by.dt.web.controller.exception.UserNotFoundException;
+import by.dt.web.controller.exception.AlreadyExistException;
+import by.dt.web.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -32,14 +32,14 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage);
     }
 
-    @ExceptionHandler(UserAlreadyExistException.class)
+    @ExceptionHandler(AlreadyExistException.class)
     public ResponseEntity<ErrorMessage> handleUserAlreadyExistException(HttpServletRequest request, Throwable e) {
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.CONFLICT, request.getRequestURL().toString(), e.getMessage());
         LOGGER.severe(errorMessage.toString());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorMessage> handleUserNotFoundException(HttpServletRequest request, Throwable e) {
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND, request.getRequestURL().toString(), e.getMessage());
         LOGGER.severe(errorMessage.toString());

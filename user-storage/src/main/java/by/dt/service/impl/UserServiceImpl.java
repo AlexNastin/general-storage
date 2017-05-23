@@ -1,14 +1,17 @@
 package by.dt.service.impl;
 
+import by.dt.entity.UserSettings;
 import by.dt.repository.UserRepository;
 import by.dt.entity.User;
 import by.dt.entity.dto.RegistrationDataDTO;
-import by.dt.web.controller.exception.UserAlreadyExistException;
-import by.dt.web.controller.exception.UserNotFoundException;
+import by.dt.web.controller.exception.AlreadyExistException;
+import by.dt.web.controller.exception.NotFoundException;
 import by.dt.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,7 +23,7 @@ public class UserServiceImpl implements UserService {
     public User addUser(RegistrationDataDTO registrationDataDTO) {
         User user = userRepository.findUserByLogin(registrationDataDTO.getLogin());
         if(user != null){
-            throw new UserAlreadyExistException("User with same login is already exist");
+            throw new AlreadyExistException("User with same login is already exist");
         }
         user = new User(registrationDataDTO);
         ObjectId objectId = new ObjectId();
@@ -33,9 +36,22 @@ public class UserServiceImpl implements UserService {
     public User userAuthentication(RegistrationDataDTO registrationDataDTO) {
         User user = userRepository.findUserByLoginAndPassword(registrationDataDTO.getLogin(), registrationDataDTO.getPassword());
         if(user == null){
-            throw new UserNotFoundException("User not found");
+            throw new NotFoundException("User not found");
         }
         return userRepository.findUserByLoginAndPassword(registrationDataDTO.getLogin(), registrationDataDTO.getPassword());
+    }
+
+    @Override
+    public void updateInterestedTradingNetworks(List<String> interestedTradingNetworksIds, String id) {
+        User user = userRepository.findOne(id);
+        if(user == null){
+            throw new NotFoundException("User not found");
+        }
+        if(user.getUserSettings() == null) {
+            user.setUserSettings(new UserSettings());
+        }
+        user.getUserSettings().setInterestedTradingNetworkIds(interestedTradingNetworksIds);
+        userRepository.save(user);
     }
 
 }
