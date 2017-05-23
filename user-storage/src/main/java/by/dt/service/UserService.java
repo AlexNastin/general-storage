@@ -9,6 +9,6 @@ public interface UserService {
 
     User addUser(RegistrationDataDTO registrationDataDTO);
     User userAuthentication(RegistrationDataDTO registrationDataDTO);
-    void updateInterestedTradingNetworks(List<String> interestedTradingNetworksIds, String id);
-
+    void updateFavoriteTradingNetworks(List<String> favoriteTradingNetworksIds, String id);
+    List<String> getFavoriteTradingNetworks(String id);
 }

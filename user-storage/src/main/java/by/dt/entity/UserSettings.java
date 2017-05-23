@@ -13,16 +13,16 @@ import java.util.List;
 public class UserSettings implements Serializable{
 
     @ApiModelProperty(value = "Список id карт лоялностей пользователя")
-    private List<String> customerCards;
+    private List<String> customerCardIds;
 
     @ApiModelProperty(value = "Список id интересующих пользователя торговых сетей")
-    private List<String> interestedTradingNetworkIds;
+    private List<String> favoriteTradingNetworkIds;
 
     @ApiModelProperty(value = "Настройки уведомлений")
     private Notification notification;
 
     @ApiModelProperty(value = "Список id предпочитаемых категорий")
-    private List<String> interestedCategoryIds;
+    private List<String> favoriteCategoryIds;
 
     @ApiModelProperty(value = "У казывает на локацию от которой осуществлять поиск. От домашнего адреса или от текущей локации")
     private Location locationMode;

@@ -1,12 +1,11 @@
 package by.dt.service.impl;
 
-import by.dt.entity.UserSettings;
-import by.dt.repository.UserRepository;
 import by.dt.entity.User;
 import by.dt.entity.dto.RegistrationDataDTO;
+import by.dt.repository.UserRepository;
+import by.dt.service.UserService;
 import by.dt.web.controller.exception.AlreadyExistException;
 import by.dt.web.controller.exception.NotFoundException;
-import by.dt.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,16 +41,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateInterestedTradingNetworks(List<String> interestedTradingNetworksIds, String id) {
+    public void updateFavoriteTradingNetworks(List<String> favoriteTradingNetworksIds, String id) {
         User user = userRepository.findOne(id);
         if(user == null){
             throw new NotFoundException("User not found");
         }
-        if(user.getUserSettings() == null) {
-            user.setUserSettings(new UserSettings());
-        }
-        user.getUserSettings().setInterestedTradingNetworkIds(interestedTradingNetworksIds);
+        user.getUserSettings().setFavoriteTradingNetworkIds(favoriteTradingNetworksIds);
         userRepository.save(user);
+    }
+
+    @Override
+    public List<String> getFavoriteTradingNetworks(String id) {
+        User user = userRepository.findOne(id);
+        if(user == null){
+            throw new NotFoundException("User not found");
+        }
+        return user.getUserSettings().getFavoriteTradingNetworkIds();
     }
 
 }

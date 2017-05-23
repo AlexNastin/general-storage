@@ -17,29 +17,28 @@ import java.util.List;
 
 @ApiResponses(value = {@ApiResponse(code = 401, message = "Unauthorized", response = ResponseEntity.class)})
 @RestController
-@RequestMapping(path = "/user-storage/v1/user", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/user-storage/v1/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @ApiOperation(value = "Регистрация нового пользователя", notes = "Возвращает созданного пользователя", produces = MediaType.APPLICATION_JSON_VALUE)
-    @RequestMapping(path = "/registration", method = RequestMethod.POST)
+    @RequestMapping(path = "/registration", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public User userRegistration(@RequestBody RegistrationDataDTO registrationDataDTO) {
         return userService.addUser(registrationDataDTO);
     }
 
     @ApiOperation(value = "Аутентификация пользователя", notes = "Возвращает авторизированного пользователя", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
-    @RequestMapping(path = "/authentication", method = RequestMethod.POST)
+    @RequestMapping(path = "/authentication", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public User userAuthentication(@RequestBody RegistrationDataDTO registrationDataDTO) {
         return userService.userAuthentication(registrationDataDTO);
     }
 
     @ApiOperation(value = "Обновление всех пользовательских настроек", notes = "Возвращает статус выполнения", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/{id}/settings", method = RequestMethod.PUT)
+    @RequestMapping(path = "/{id}/settings", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateUserSettings(@RequestBody UserSettings userSettings, @PathVariable(value = "id") String id) {
         //TODO : updateUserSettings
         return new ResponseEntity(HttpStatus.OK);
@@ -47,20 +46,24 @@ public class UserController {
 
     @ApiOperation(value = "Обновление предпочитаемых категорий", notes = "Возвращает статус выполнения", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/{id}/settings/interestedCategories", method = RequestMethod.PUT)
-    public ResponseEntity updateInterestedCategories(@RequestBody List<String> interestedCategoryIds, @PathVariable(value = "id") String id) {
+    @RequestMapping(path = "/{id}/settings/favoriteCategories", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateFavoriteCategories(@RequestBody List<String> favoriteCategoryIds, @PathVariable(value = "id") String id) {
         //TODO : updateUserSettings
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @ApiOperation(value = "Обновление предпочитаемых торговых сетей", notes = "Возвращает статус выполнения", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/{id}/settings/interestedTradingNetworks", method = RequestMethod.PUT)
-    public ResponseEntity updateInterestedTradingNetworks(@RequestBody List<String> interestedTradingNetworksIds, @PathVariable(value = "id") String id) {
-        userService.updateInterestedTradingNetworks(interestedTradingNetworksIds, id);
+    @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateFavoriteTradingNetworks(@RequestBody List<String> favoriteTradingNetworksIds, @PathVariable(value = "id") String id) {
+        userService.updateFavoriteTradingNetworks(favoriteTradingNetworksIds, id);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Получение предпочитаемых торговых сетей", notes = "Возвращает предпочитаемые торговые сети", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<String> getFavoriteTradingNetworks(@PathVariable(value = "id") String id) {
+        return userService.getFavoriteTradingNetworks(id);
     }
 
 }

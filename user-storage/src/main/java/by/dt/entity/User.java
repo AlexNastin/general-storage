@@ -35,5 +35,7 @@ public class User implements Serializable {
     public User(RegistrationDataDTO registrationDataDTO){
         this.login = registrationDataDTO.getLogin();
         this.password = registrationDataDTO.getPassword();
+        this.personalSettings = new PersonalSettings();
+        this.userSettings = new UserSettings();
     }
 }
