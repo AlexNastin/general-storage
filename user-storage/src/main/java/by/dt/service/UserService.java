@@ -11,4 +11,5 @@ public interface UserService {
     User userAuthentication(RegistrationDataDTO registrationDataDTO);
     void updateFavoriteTradingNetworks(List<String> favoriteTradingNetworksIds, String id);
     List<String> getFavoriteTradingNetworks(String id);
+    List<String> getFavoriteCategories(String id);
 }

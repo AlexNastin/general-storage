@@ -59,4 +59,12 @@ public class UserServiceImpl implements UserService {
         return user.getUserSettings().getFavoriteTradingNetworkIds();
     }
 
+    @Override public List<String> getFavoriteCategories(String id) {
+        User user = userRepository.findOne(id);
+        if(user == null){
+            throw new NotFoundException("User not found");
+        }
+        return user.getUserSettings().getFavoriteCategoryIds();
+    }
+
 }

@@ -52,6 +52,12 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Получение предпочитаемых категорий", notes = "Возвращает предпочитаемые категориb", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings/favoriteCategories", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<String> getFavoriteCategories(@PathVariable(value = "id") String id) {
+        return userService.getFavoriteCategories(id);
+    }
+
     @ApiOperation(value = "Обновление предпочитаемых торговых сетей", notes = "Возвращает статус выполнения", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
