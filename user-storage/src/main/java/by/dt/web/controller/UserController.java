@@ -1,5 +1,6 @@
 package by.dt.web.controller;
 
+import by.dt.entity.PersonalInformation;
 import by.dt.entity.User;
 import by.dt.entity.UserSettings;
 import by.dt.entity.dto.RegistrationDataDTO;
@@ -70,6 +71,14 @@ public class UserController {
     @RequestMapping(path = "/{id}/settings/favoriteTradingNetworks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> getFavoriteTradingNetworks(@PathVariable(value = "id") String id) {
         return userService.getFavoriteTradingNetworks(id);
+    }
+
+    @ApiOperation(value = "Обновление персональных данных пользователя", notes = "Возвращает статус выполнения", produces = MediaType.APPLICATION_JSON_VALUE
+            , consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/personalInformation", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updatePersonalInformation(@RequestBody PersonalInformation personalInformation, @PathVariable(value = "id") String id) {
+        userService.updatePersonalInformation(personalInformation, id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }

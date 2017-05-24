@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 @Data
 @ApiModel(value = "Персональные данные пользователя")
-public class PersonalSettings implements Serializable{
+public class PersonalInformation implements Serializable{
 
     @ApiModelProperty(value = "Имя пользователя", example = "Иван")
     private String name;

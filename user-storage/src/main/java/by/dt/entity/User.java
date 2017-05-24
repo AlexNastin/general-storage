@@ -27,7 +27,7 @@ public class User implements Serializable {
     private String password;
 
     @ApiModelProperty(value = "Персональные данные пользователя")
-    private PersonalSettings personalSettings;
+    private PersonalInformation personalInformation;
 
     @ApiModelProperty(value = "Пользовательские настройки")
     private UserSettings userSettings;
@@ -35,7 +35,7 @@ public class User implements Serializable {
     public User(RegistrationDataDTO registrationDataDTO){
         this.login = registrationDataDTO.getLogin();
         this.password = registrationDataDTO.getPassword();
-        this.personalSettings = new PersonalSettings();
+        this.personalInformation = new PersonalInformation();
         this.userSettings = new UserSettings();
     }
 }
