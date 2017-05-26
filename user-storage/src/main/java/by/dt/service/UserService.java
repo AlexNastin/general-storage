@@ -16,4 +16,5 @@ public interface UserService {
     List<String> getFavoriteCategories(String id);
     void updatePersonalInformation(PersonalInformation personalInformation, String id);
     Notification getNotificationSettings(String id);
+    void updateNotificationSettings(Notification notification, String id);
 }

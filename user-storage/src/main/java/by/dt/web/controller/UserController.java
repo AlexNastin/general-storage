@@ -82,9 +82,17 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Получение получение настроек уведомлений", notes = "Возвращает настройки уведомлений", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Получение настроек уведомлений", notes = "Возвращает настройки уведомлений", produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(path = "/{id}/settings/notification", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Notification getNotificationSettings(@PathVariable(value = "id") String id) {
         return userService.getNotificationSettings(id);
+    }
+
+    @ApiOperation(value = "Обновление настроек уведомлений", notes = "Возвращает статус выполнения", produces = MediaType.APPLICATION_JSON_VALUE
+            , consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings/notification", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateNotificationSettings(@RequestBody Notification notification, @PathVariable(value = "id") String id) {
+        userService.updateNotificationSettings(notification, id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

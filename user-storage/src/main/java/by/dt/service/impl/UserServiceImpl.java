@@ -86,4 +86,13 @@ public class UserServiceImpl implements UserService {
         return user.getUserSettings().getNotification();
     }
 
+    @Override public void updateNotificationSettings(Notification notification, String id) {
+        User user = userRepository.findOne(id);
+        if(user == null){
+            throw new NotFoundException("User not found");
+        }
+        user.getUserSettings().setNotification(notification);
+        userRepository.save(user);
+    }
+
 }
