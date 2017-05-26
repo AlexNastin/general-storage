@@ -24,7 +24,7 @@ public class PersonalInformation implements Serializable{
 
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    @ApiModelProperty(value = "Дата рождения")
+    @ApiModelProperty(value = "Дата рождения", dataType = "java.lang.String", example = "21.09.1991")
     private LocalDate birthday;
 
     @ApiModelProperty(value = "Пол")

@@ -1,5 +1,6 @@
 package by.dt.service.impl;
 
+import by.dt.entity.Notification;
 import by.dt.entity.PersonalInformation;
 import by.dt.entity.User;
 import by.dt.entity.dto.RegistrationDataDTO;
@@ -75,6 +76,14 @@ public class UserServiceImpl implements UserService {
         }
         user.setPersonalInformation(personalInformation);
         userRepository.save(user);
+    }
+
+    @Override public Notification getNotificationSettings(String id) {
+        User user = userRepository.findOne(id);
+        if(user == null){
+            throw new NotFoundException("User not found");
+        }
+        return user.getUserSettings().getNotification();
     }
 
 }

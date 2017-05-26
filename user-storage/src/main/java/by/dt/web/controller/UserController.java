@@ -1,5 +1,6 @@
 package by.dt.web.controller;
 
+import by.dt.entity.Notification;
 import by.dt.entity.PersonalInformation;
 import by.dt.entity.User;
 import by.dt.entity.UserSettings;
@@ -81,4 +82,9 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Получение получение настроек уведомлений", notes = "Возвращает настройки уведомлений", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}/settings/notification", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Notification getNotificationSettings(@PathVariable(value = "id") String id) {
+        return userService.getNotificationSettings(id);
+    }
 }
